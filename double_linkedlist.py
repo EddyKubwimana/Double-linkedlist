@@ -1,43 +1,66 @@
 class Node:
     def __init__(self,data):
+        
         self.data = data
         self.next = None
         self.prev = None
+        
 class DoubleLinkedlist:
+    
     def __init__(self):
 
         self.head = None
         self.tail = None
-    def insert_right(self,node):
+        
+    def insert_right(self,node, after = None):
+        
         new_node = Node(node)
         if self.head == None:
             self.head = new_node
+
+            
             return
+        
         cur_node = self.head
+        
         while cur_node:
-            if cur_node.next == None:
+            if cur_node.next != None and cur_node.data == after:
+                    new_node = Node(node)
+                    prev_node = new_node
+                    prev_node.next = cur_node.next
+                    prev_node.prev = cur_node
+                    cur_node.next.prev = prev_node
+                    cur_node.next =prev_node
+                    break
+
+            
+            if cur_node.next == None and after == None:
+                    
                 
-                new_node = Node(node)
-                prev_node = new_node
-                prev_node.prev = cur_node
-                cur_node.next = new_node
-                self.tail= cur_node.next
+                    new_node = Node(node)
+                    prev_node = new_node
+                    prev_node.prev = cur_node
+                    cur_node.next = new_node
+                    self.tail= cur_node.next
+
     
-    
-                break
+                    break
+            
             cur_node = cur_node.next
+            
     def insert_left(self,before, node):
+        
           new_node= Node(node)
           if self.tail == None:
               self.tail = new_node
           cur_node = self.tail
         
           while cur_node:
+              
             if cur_node.data == before:
+                
                 side_left = cur_node.prev
                 side_right = cur_node
-                
-                
                 new_node = Node(node)
                 prev_node = new_node
                 prev_node.next = side_right
@@ -66,6 +89,7 @@ l.insert_right(10)
 l.insert_right(40)
 l.insert_right(20)
 l.insert_right(30)
+l.insert_right(200,40)
 l.print_nodes()
 print()
 l.insert_left(20,7)
