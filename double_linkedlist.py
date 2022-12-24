@@ -79,6 +79,30 @@ class DoubleLinkedlist:
         while cur_node:
             print(cur_node.data)
             cur_node = cur_node.next
+
+    def delete_node(self,node):
+       if self.head == None:
+           return
+       cur_node = self.head
+       while cur_node:
+           if cur_node.data == node:
+               if cur_node.prev==None:
+                   self.head = cur_node.next
+                   break
+               elif cur_node.next== None:
+                   final_list = cur_node.prev
+                   self.tail= final_list
+                   final_list.next= None
+                   break
+               else:
+                   first_part = cur_node.prev
+                   second_part = cur_node.next
+                   first_part.next = second_part
+                   second_part.prev =first_part
+                   break
+           cur_node = cur_node.next
+                   
+               
         
            
               
@@ -97,8 +121,10 @@ l.insert_left(30,8)
 l.insert_left(40,5)
 l.insert_left(7,100)
 print()
-print()
 
+l.delete_node(30)
+#l.delete_node()
+print()
 l.print_nodes()
 
 
