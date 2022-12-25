@@ -47,7 +47,7 @@ class DoubleLinkedlist:
                     break
             
             cur_node = cur_node.next
-            
+    
     def insert_left(self,before, node):
         
           new_node= Node(node)
@@ -72,6 +72,8 @@ class DoubleLinkedlist:
                 
             cur_node = cur_node.prev
 
+    
+    # function prints the nodes in the list
     def print_nodes(self):
         if self.head == None:
             return
@@ -80,6 +82,8 @@ class DoubleLinkedlist:
             print(cur_node.data)
             cur_node = cur_node.next
 
+        
+    #function to delete a node after given 
     def delete_node(self,node):
        if self.head == None:
            return
@@ -101,12 +105,22 @@ class DoubleLinkedlist:
                    second_part.prev =first_part
                    break
            cur_node = cur_node.next
+    
+    #function to find the length of doubly linkedlist
+    def size(self):
+        if self.head == None:
+            print(0)
+            return None
+        cur_node = self.head
+        length = 0
+        while cur_node:
+            length += 1
+            cur_node = cur_node.next
+        print(length)
+        
+        
                    
-               
-        
-           
-              
-        
+#testing the different functions  
 
 l = DoubleLinkedlist()
 l.insert_right(10)
@@ -123,9 +137,11 @@ l.insert_left(7,100)
 print()
 
 l.delete_node(30)
-#l.delete_node()
 print()
 l.print_nodes()
+
+print()
+l.size()
 
 
             
