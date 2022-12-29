@@ -118,6 +118,27 @@ class DoubleLinkedlist:
             cur_node = cur_node.next
         print(length)
         
+    def sort(self):
+        if self.head == None:
+            return
+        cur_node = self.head
+        x = True
+        while x:
+            x = False
+            while cur_node.next:
+                if cur_node.data > cur_node.next.data:
+                    x = True
+                    temp_var1 = cur_node.data
+                    temp_var2 =cur_node.next.data
+                    cur_node.data =temp_var2
+                    cur_node.next.data = temp_var1
+                    cur_node.next.prev.data = temp_var2
+                cur_node = cur_node.next
+            cur_node = self.head
+    
+    
+                    
+            
         
                    
 #testing the different functions  
@@ -142,6 +163,10 @@ l.print_nodes()
 
 print()
 l.size()
+
+print()
+l.sort()
+l.print_nodes()
 
 
             
