@@ -25,7 +25,6 @@ class DoubleLinkedlist:
         
         while cur_node:
             if cur_node.next != None and cur_node.data == after:
-                    new_node = Node(node)
                     prev_node = new_node
                     prev_node.next = cur_node.next
                     prev_node.prev = cur_node
@@ -61,7 +60,6 @@ class DoubleLinkedlist:
                 
                 side_left = cur_node.prev
                 side_right = cur_node
-                new_node = Node(node)
                 prev_node = new_node
                 prev_node.next = side_right
                 side_right.prev = prev_node
