@@ -72,13 +72,15 @@ class DoubleLinkedlist:
 
     
     # function prints the nodes in the list
-    def print_nodes(self):
+    def __str__(self):
         if self.head == None:
-            return
+            return 0
+        number = []
         cur_node = self.head
         while cur_node:
-            print(cur_node.data)
+            number.append(cur_node.data)
             cur_node = cur_node.next
+            return f"{number}"
 
         
     #function to delete a node after given 
@@ -107,14 +109,13 @@ class DoubleLinkedlist:
     #function to find the length of doubly linkedlist
     def size(self):
         if self.head == None:
-            print(0)
             return None
         cur_node = self.head
         length = 0
         while cur_node:
             length += 1
             cur_node = cur_node.next
-        print(length)
+        return length
         
     def sort(self):
         if self.head == None:
@@ -143,28 +144,8 @@ class DoubleLinkedlist:
 
 l = DoubleLinkedlist()
 l.insert_right(10)
-l.insert_right(40)
-l.insert_right(20)
-l.insert_right(30)
-l.insert_right(200,40)
-l.print_nodes()
-print()
-l.insert_left(20,7)
-l.insert_left(30,8)
-l.insert_left(40,5)
-l.insert_left(7,100)
-print()
+print(l)
 
-l.delete_node(30)
-print()
-l.print_nodes()
-
-print()
-l.size()
-
-print()
-l.sort()
-l.print_nodes()
 
 
             
