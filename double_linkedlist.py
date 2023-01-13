@@ -11,29 +11,19 @@ class DoubleLinkedlist:
 
         self.head = None
         self.tail = None
+        self.size = None
         
-    def insert_right(self,node, after = None):
+    def append(self,node):
         
         new_node = Node(node)
         if self.head == None:
             self.head = new_node
-
-            
             return
         
         cur_node = self.head
         
         while cur_node:
-            if cur_node.next != None and cur_node.data == after:
-                    prev_node = new_node
-                    prev_node.next = cur_node.next
-                    prev_node.prev = cur_node
-                    cur_node.next.prev = prev_node
-                    cur_node.next =prev_node
-                    break
-
-            
-            if cur_node.next == None and after == None:
+            if cur_node.next == None:
                     
                 
                     new_node = Node(node)
@@ -47,7 +37,7 @@ class DoubleLinkedlist:
             
             cur_node = cur_node.next
     
-    def insert_left(self,before, node):
+    def insert_left(self,node,before):
         
           new_node= Node(node)
           if self.tail == None:
@@ -73,6 +63,7 @@ class DoubleLinkedlist:
     
     # function prints the nodes in the list
     def __str__(self):
+        ''' print the list object'''
         if self.head == None:
             return 0
         number = []
@@ -80,11 +71,12 @@ class DoubleLinkedlist:
         while cur_node:
             number.append(cur_node.data)
             cur_node = cur_node.next
-            return f"{number}"
+        return f"{number}"
 
         
     #function to delete a node after given 
     def delete_node(self,node):
+       ''' delete a given node'''
        if self.head == None:
            return
        cur_node = self.head
@@ -105,19 +97,9 @@ class DoubleLinkedlist:
                    second_part.prev =first_part
                    break
            cur_node = cur_node.next
-    
-    #function to find the length of doubly linkedlist
-    def size(self):
-        if self.head == None:
-            return None
-        cur_node = self.head
-        length = 0
-        while cur_node:
-            length += 1
-            cur_node = cur_node.next
-        return length
-        
+    @property
     def sort(self):
+        ''' sort and return the sorted list in ascending order'''
         if self.head == None:
             return
         cur_node = self.head
@@ -134,7 +116,25 @@ class DoubleLinkedlist:
                     cur_node.next.prev.data = temp_var2
                 cur_node = cur_node.next
             cur_node = self.head
-    
+
+    def reverse(self):
+      '''reverse and return the reversed list'''
+      pass
+
+    def index(self, value):
+        ''' the function return the index of the value in a list and return None if the value is not in the list'''
+        if self.head == None:
+            return -1
+        cur_node = self.head
+        index = 0
+        while cur_node:
+            if cur_node.data == value:
+                return index
+            else:
+                index +=1
+                cur_node = cur_node.next
+        return index
+            
     
                     
             
@@ -143,8 +143,13 @@ class DoubleLinkedlist:
 #testing the different functions  
 
 l = DoubleLinkedlist()
-l.insert_right(10)
+l.append(10)
+l.append(20)
+l.append(4)
+l.append(30)
+l.sort
 print(l)
+print(l.index(30))
 
 
 
